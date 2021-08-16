@@ -58,8 +58,8 @@ extension AllBeersController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: AllBeersCell.reuseIdentifier, for: indexPath) as! AllBeersCell
         
-        let beer = viewModel.beers[indexPath.row]
-        cell.beer = beer
+        let allBeersCellViewModel = viewModel.getAllBeersCellViewModel(forIndexPath: indexPath)
+        cell.viewModel = allBeersCellViewModel
         
         return cell
     }
@@ -68,25 +68,19 @@ extension AllBeersController: UITableViewDataSource {
 // MARK: - UITableViewDelegate
 
 extension AllBeersController: UITableViewDelegate {
-    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         
         navigationController?.pushViewController(DetailsOfBeerController(), animated: true)
     }
-    
 }
 
+//MARK: - AllBeersViewModelDelegate
 
-//MARK: ViewModelDelegate
 extension AllBeersController: AllBeersViewModelDelegate {
-    
     func updateView() {
         DispatchQueue.main.async {
-            print("yes")
             self.tableView.reloadData()
         }
     }
-    
-    
 }

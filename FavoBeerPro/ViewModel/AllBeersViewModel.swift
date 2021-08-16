@@ -23,6 +23,11 @@ class AllBeersViewModel {
         }
     }
     
+    func getAllBeersCellViewModel(forIndexPath indexPath: IndexPath) -> AllBeersCellViewModel? {
+        let beer = beers[indexPath.row]
+        return AllBeersCellViewModel(beer: beer)
+    }
+    
     // MARK: - API
     
     func fetchData() {

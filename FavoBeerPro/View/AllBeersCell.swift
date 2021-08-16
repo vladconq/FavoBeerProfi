@@ -7,16 +7,19 @@
 
 import UIKit
 
-class AllBeersCell: UITableViewCell {
+class AllBeersCell: UITableViewCell, AllBeersCellViewModelDelegate {
+    func updateView() {
+        print("hi")
+    }
     
     // MARK: - Properties
     
     static let reuseIdentifier = "AllBeersCell"
     
-    var beer: Beer? {
+    var viewModel: AllBeersCellViewModel? {
         didSet {
-            beerNameLabel.text = beer?.name
-            beerABVLabel.text = "\(beer?.abv)"
+            beerNameLabel.text = viewModel?.beerName
+            beerABVLabel.text = viewModel?.beerABV
         }
     }
     

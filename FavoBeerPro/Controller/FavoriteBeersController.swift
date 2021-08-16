@@ -8,6 +8,7 @@
 import UIKit
 
 class FavoriteBeersController: UIViewController {
+    
     // MARK: - Properties
     
     // MARK: - Lifecycle
