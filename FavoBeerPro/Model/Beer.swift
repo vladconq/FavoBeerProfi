@@ -7,7 +7,11 @@
 
 import Foundation
 
-class Beer: Codable {
+class Beer: Codable, Equatable {
+    static func == (lhs: Beer, rhs: Beer) -> Bool {
+        return lhs.name == rhs.name
+    }
+    
     let name: String?
     let abv: Float?
     let ibu: Float?

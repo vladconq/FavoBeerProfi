@@ -64,6 +64,14 @@ class AllBeersCell: UITableViewCell {
     
     @objc func handlePressFavorite() {
         beer!._favorite = !beer!._favorite
+        
+        if beer!._favorite {
+            saveData(beer: beer!)
+
+        } else {
+            removeData(beer: beer!)
+        }
+        
         delegate?.updateView()
     }
     
