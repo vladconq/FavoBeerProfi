@@ -9,8 +9,6 @@
 /* Begin PBXBuildFile section */
 		0A04E47F26C967DC00E53CB9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A04E47E26C967DC00E53CB9 /* AppDelegate.swift */; };
 		0A04E48126C967DC00E53CB9 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A04E48026C967DC00E53CB9 /* SceneDelegate.swift */; };
-		0A04E48326C967DC00E53CB9 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A04E48226C967DC00E53CB9 /* ViewController.swift */; };
-		0A04E48626C967DC00E53CB9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0A04E48426C967DC00E53CB9 /* Main.storyboard */; };
 		0A04E48826C967DE00E53CB9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0A04E48726C967DE00E53CB9 /* Assets.xcassets */; };
 		0A04E48B26C967DE00E53CB9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0A04E48926C967DE00E53CB9 /* LaunchScreen.storyboard */; };
 		0A04E49926C9687C00E53CB9 /* AllBeersController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A04E49826C9687C00E53CB9 /* AllBeersController.swift */; };
@@ -29,8 +27,6 @@
 		0A04E47B26C967DC00E53CB9 /* FavoBeerPro.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FavoBeerPro.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0A04E47E26C967DC00E53CB9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0A04E48026C967DC00E53CB9 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		0A04E48226C967DC00E53CB9 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		0A04E48526C967DC00E53CB9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		0A04E48726C967DE00E53CB9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0A04E48A26C967DE00E53CB9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		0A04E48C26C967DE00E53CB9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -84,8 +80,6 @@
 				0A04E49226C9681A00E53CB9 /* Model */,
 				0A04E47E26C967DC00E53CB9 /* AppDelegate.swift */,
 				0A04E48026C967DC00E53CB9 /* SceneDelegate.swift */,
-				0A04E48226C967DC00E53CB9 /* ViewController.swift */,
-				0A04E48426C967DC00E53CB9 /* Main.storyboard */,
 				0A04E48726C967DE00E53CB9 /* Assets.xcassets */,
 				0A04E48926C967DE00E53CB9 /* LaunchScreen.storyboard */,
 				0A04E48C26C967DE00E53CB9 /* Info.plist */,
@@ -204,7 +198,6 @@
 			files = (
 				0A04E48B26C967DE00E53CB9 /* LaunchScreen.storyboard in Resources */,
 				0A04E48826C967DE00E53CB9 /* Assets.xcassets in Resources */,
-				0A04E48626C967DC00E53CB9 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -217,7 +210,6 @@
 			files = (
 				0A04E49B26C9697600E53CB9 /* FavoriteBeersController.swift in Sources */,
 				0A04E4A326C989C800E53CB9 /* Beer.swift in Sources */,
-				0A04E48326C967DC00E53CB9 /* ViewController.swift in Sources */,
 				0A04E49D26C96B5B00E53CB9 /* MainTabController.swift in Sources */,
 				0A04E4A926CA914500E53CB9 /* AllBeersViewModel.swift in Sources */,
 				0A04E4A126C981AC00E53CB9 /* Extensions.swift in Sources */,
@@ -234,14 +226,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		0A04E48426C967DC00E53CB9 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				0A04E48526C967DC00E53CB9 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		0A04E48926C967DE00E53CB9 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
