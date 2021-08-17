@@ -33,4 +33,11 @@ class AllBeersViewModel {
         })
     }
     
+    // MARK: - Helpers
+    
+    func getDetailsBeerViewModel(forIndexPath indexPath: IndexPath) -> DetailsBeerViewModel? {
+        let detailsBeerViewModel = DetailsBeerViewModel(beer: beers[indexPath.row])
+        return detailsBeerViewModel
+    }
+    
 }

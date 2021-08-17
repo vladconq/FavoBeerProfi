@@ -73,7 +73,12 @@ extension AllBeersController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         
-        navigationController?.pushViewController(DetailsOfBeerController(), animated: true)
+        let detailsBeerViewModel = viewModel.getDetailsBeerViewModel(forIndexPath: indexPath)
+        
+        let detailVC = DetailsBeerController()
+        detailVC.viewModel = detailsBeerViewModel!
+        detailVC.delegate = self
+        navigationController?.pushViewController(detailVC, animated: true)
     }
     
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {

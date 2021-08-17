@@ -102,7 +102,6 @@ class DataManager {
     }
     
     func saveData(beer: Beer) {
-        print(dataFilePath)
         
         let encoder = PropertyListEncoder()
         
