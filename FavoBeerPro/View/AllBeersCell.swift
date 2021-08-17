@@ -7,19 +7,25 @@
 
 import UIKit
 
-class AllBeersCell: UITableViewCell, AllBeersCellViewModelDelegate {
-    func updateView() {
-        print("hi")
-    }
+class AllBeersCell: UITableViewCell {
     
     // MARK: - Properties
     
+    var delegate: UpdateAllBeersTableDelegate?
+    
     static let reuseIdentifier = "AllBeersCell"
     
-    var viewModel: AllBeersCellViewModel? {
+    var beer: Beer? {
         didSet {
-            beerNameLabel.text = viewModel?.beerName
-            beerABVLabel.text = viewModel?.beerABV
+            beerNameLabel.text = beer?.name
+            
+            if let beerABV = beer?.abv {
+                beerABVLabel.text = "Vol: \(beerABV)"
+            } else {
+                beerABVLabel.text = "Vol: -"
+            }
+            
+            favoriteButton.tintColor = beer!._favorite ? #colorLiteral(red: 0.9686274529, green: 0.78039217, blue: 0.3450980484, alpha: 1) : #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
         }
     }
     
@@ -39,7 +45,6 @@ class AllBeersCell: UITableViewCell, AllBeersCellViewModelDelegate {
     private let favoriteButton: UIButton = {
         let button = UIButton(type: .system)
         button.setImage(UIImage(systemName: "star.fill"), for: .normal)
-        button.tintColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
         return button
     }()
     
@@ -58,7 +63,8 @@ class AllBeersCell: UITableViewCell, AllBeersCellViewModelDelegate {
     // MARK: - Selectors
     
     @objc func handlePressFavorite() {
-        print("Press Favorite")
+        beer!._favorite = !beer!._favorite
+        delegate?.updateView()
     }
     
     // MARK: - Helpers
@@ -68,6 +74,7 @@ class AllBeersCell: UITableViewCell, AllBeersCellViewModelDelegate {
         
         contentView.addSubview(favoriteButton)
         favoriteButton.anchor(right: rightAnchor, paddingRight: 20)
+        favoriteButton.setDimensions(height: 50, width: 50)
         favoriteButton.centerY(inView: self)
     }
     
@@ -77,7 +84,7 @@ class AllBeersCell: UITableViewCell, AllBeersCellViewModelDelegate {
         stack.spacing = 2
         
         addSubview(stack)
-        stack.anchor(left: contentView.leftAnchor, paddingLeft: 20)
+        stack.anchor(left: contentView.leftAnchor, right: favoriteButton.leftAnchor, paddingLeft: 20)
         stack.centerY(inView: self)
     }
     

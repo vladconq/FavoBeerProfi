@@ -15,17 +15,12 @@ class AllBeersViewModel {
     
     // MARK: - Properties
     
-    var delegate: AllBeersViewModelDelegate?
+    var delegate: UpdateAllBeersTableDelegate?
     
     var beers = [Beer]() {
         didSet {
             delegate?.updateView()
         }
-    }
-    
-    func getAllBeersCellViewModel(forIndexPath indexPath: IndexPath) -> AllBeersCellViewModel? {
-        let beer = beers[indexPath.row]
-        return AllBeersCellViewModel(beer: beer)
     }
     
     // MARK: - API
@@ -35,7 +30,5 @@ class AllBeersViewModel {
             self.beers = beers
         })
     }
-    
-    
     
 }

@@ -7,9 +7,20 @@
 
 import Foundation
 
-struct Beer: Codable {
+class Beer: Codable {
     let name: String?
     let abv: Float?
     let ibu: Float?
     let ebc: Float?
+    var favorite: Bool?
+    
+    // for code
+    var _favorite: Bool {
+        get {
+            favorite ?? false
+        }
+        set {
+            favorite = newValue
+        }
+    }
 }
