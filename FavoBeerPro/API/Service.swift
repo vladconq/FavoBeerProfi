@@ -10,10 +10,11 @@ import Foundation
 class Service {
     
     static let shared = Service()
+    var page = 1
     
     func fetchBeerData(completion: @escaping ([Beer]) -> Void) {
         
-        guard let url = URL(string: "https://api.punkapi.com/v2/beers?page=1&per_page=80") else {return}
+        guard let url = URL(string: "https://api.punkapi.com/v2/beers?page=\(page)&per_page=20") else {return}
         
         URLSession.shared.dataTask(with: url) { data, response, error in
             guard error == nil else {
@@ -29,6 +30,8 @@ class Service {
             } catch {
                 print(error)
             }
+            
+            self.page += 1
         }.resume()
     }
     

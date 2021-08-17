@@ -75,9 +75,17 @@ extension AllBeersController: UITableViewDelegate {
         
         navigationController?.pushViewController(DetailsOfBeerController(), animated: true)
     }
+    
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        let lastItem = viewModel.beers.count - 1
+        
+        if indexPath.row == lastItem {
+            viewModel.fetchData()
+        }
+    }
 }
 
-//MARK: - AllBeersViewModelDelegate
+//MARK: - UpdateAllBeersTableDelegate
 
 extension AllBeersController: UpdateAllBeersTableDelegate {
     func updateView() {

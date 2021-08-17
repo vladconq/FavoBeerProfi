@@ -27,7 +27,9 @@ class AllBeersViewModel {
     
     func fetchData() {
         Service.shared.fetchBeerData(completion: { beers in
-            self.beers = beers
+            for beer in beers {
+                self.beers.append(beer)
+            }
         })
     }
     
