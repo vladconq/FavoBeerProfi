@@ -80,7 +80,7 @@ extension UIView {
     }
 }
 
-extension UIView {
+class DataManager {
     
     var dataFilePath: URL? {
         return FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first?.appendingPathComponent("Beers.plist")

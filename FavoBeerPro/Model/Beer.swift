@@ -8,6 +8,7 @@
 import Foundation
 
 class Beer: Codable, Equatable {
+    
     static func == (lhs: Beer, rhs: Beer) -> Bool {
         return lhs.name == rhs.name
     }
@@ -18,10 +19,24 @@ class Beer: Codable, Equatable {
     let ebc: Float?
     var favorite: Bool?
     
-    // for code
     var _favorite: Bool {
         get {
-            favorite ?? false
+            
+            // first initialisation
+            if favorite == nil {
+                let favoriteBeers = DataManager().loadData()
+                
+                for favoriteBeer in favoriteBeers {
+                    if name == favoriteBeer.name {
+                        print("check")
+                        return true
+                    }
+                }
+                
+                return false
+            } else {
+                return favorite!
+            }
         }
         set {
             favorite = newValue

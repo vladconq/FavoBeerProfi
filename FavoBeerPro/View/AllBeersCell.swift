@@ -12,6 +12,7 @@ class AllBeersCell: UITableViewCell {
     // MARK: - Properties
     
     var delegate: UpdateAllBeersTableDelegate?
+    var dataManager = DataManager()
     
     static let reuseIdentifier = "AllBeersCell"
     
@@ -64,12 +65,12 @@ class AllBeersCell: UITableViewCell {
     
     @objc func handlePressFavorite() {
         beer!._favorite = !beer!._favorite
-        
+        print("data manager")
         if beer!._favorite {
-            saveData(beer: beer!)
+            dataManager.saveData(beer: beer!)
 
         } else {
-            removeData(beer: beer!)
+            dataManager.removeData(beer: beer!)
         }
         
         delegate?.updateView()
