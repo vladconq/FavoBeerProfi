@@ -40,4 +40,9 @@ class AllBeersViewModel {
         return detailsBeerViewModel
     }
     
+    func getAllBeersCellViewModel(forIndexPath indexPath: IndexPath) -> AllBeersCellViewModel? {
+        let allBeersCellViewModel = AllBeersCellViewModel(beer: beers[indexPath.row])
+        return allBeersCellViewModel
+    }
+    
 }

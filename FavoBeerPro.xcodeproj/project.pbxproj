@@ -22,6 +22,7 @@
 		0A04E4A926CA914500E53CB9 /* AllBeersViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A04E4A826CA914500E53CB9 /* AllBeersViewModel.swift */; };
 		0A0B1ED026CB766B00EDE8A6 /* UpdateAllBeersTableDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A0B1ECF26CB766B00EDE8A6 /* UpdateAllBeersTableDelegate.swift */; };
 		0A0B1ED426CBD7C400EDE8A6 /* DetailsBeerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A0B1ED326CBD7C400EDE8A6 /* DetailsBeerViewModel.swift */; };
+		0A0B1ED626CCC08000EDE8A6 /* AllBeersCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A0B1ED526CCC08000EDE8A6 /* AllBeersCellViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -42,6 +43,7 @@
 		0A04E4A826CA914500E53CB9 /* AllBeersViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllBeersViewModel.swift; sourceTree = "<group>"; };
 		0A0B1ECF26CB766B00EDE8A6 /* UpdateAllBeersTableDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateAllBeersTableDelegate.swift; sourceTree = "<group>"; };
 		0A0B1ED326CBD7C400EDE8A6 /* DetailsBeerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsBeerViewModel.swift; sourceTree = "<group>"; };
+		0A0B1ED526CCC08000EDE8A6 /* AllBeersCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllBeersCellViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -110,6 +112,7 @@
 			children = (
 				0A04E4A826CA914500E53CB9 /* AllBeersViewModel.swift */,
 				0A0B1ED326CBD7C400EDE8A6 /* DetailsBeerViewModel.swift */,
+				0A0B1ED526CCC08000EDE8A6 /* AllBeersCellViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -215,6 +218,7 @@
 				0A04E4A326C989C800E53CB9 /* Beer.swift in Sources */,
 				0A04E49D26C96B5B00E53CB9 /* MainTabController.swift in Sources */,
 				0A04E4A926CA914500E53CB9 /* AllBeersViewModel.swift in Sources */,
+				0A0B1ED626CCC08000EDE8A6 /* AllBeersCellViewModel.swift in Sources */,
 				0A04E4A126C981AC00E53CB9 /* Extensions.swift in Sources */,
 				0A0B1ED426CBD7C400EDE8A6 /* DetailsBeerViewModel.swift in Sources */,
 				0A04E4A726C99CAD00E53CB9 /* DetailsBeerController.swift in Sources */,

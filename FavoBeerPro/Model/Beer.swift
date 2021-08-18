@@ -28,7 +28,6 @@ class Beer: Codable, Equatable {
                 
                 for favoriteBeer in favoriteBeers {
                     if name == favoriteBeer.name {
-                        print("check")
                         return true
                     }
                 }

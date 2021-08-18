@@ -45,11 +45,9 @@ class DetailsBeerViewModel {
         beer._favorite = !beer._favorite
         
         if beer._favorite {
-            print("add")
             dataManager.saveData(beer: beer!)
 
         } else {
-            print("delete")
             dataManager.removeData(beer: beer!)
         }
         

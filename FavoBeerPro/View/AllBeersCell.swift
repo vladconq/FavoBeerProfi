@@ -7,6 +7,8 @@
 
 import UIKit
 
+
+
 class AllBeersCell: UITableViewCell {
     
     // MARK: - Properties
@@ -14,19 +16,15 @@ class AllBeersCell: UITableViewCell {
     var delegate: UpdateAllBeersTableDelegate?
     var dataManager = DataManager()
     
+    
     static let reuseIdentifier = "AllBeersCell"
     
-    var beer: Beer? {
+    var viewModel: AllBeersCellViewModel? {
         didSet {
-            beerNameLabel.text = beer?.name
+            beerNameLabel.text = viewModel?.beerName
+            beerABVLabel.text = viewModel?.beerABV
             
-            if let beerABV = beer?.abv {
-                beerABVLabel.text = "Vol: \(beerABV)"
-            } else {
-                beerABVLabel.text = "Vol: -"
-            }
-            
-            favoriteButton.tintColor = beer!._favorite ? #colorLiteral(red: 0.9686274529, green: 0.78039217, blue: 0.3450980484, alpha: 1) : #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
+            favoriteButton.tintColor = viewModel!.isFavorite ? #colorLiteral(red: 0.9686274529, green: 0.78039217, blue: 0.3450980484, alpha: 1) : #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
         }
     }
     
@@ -64,14 +62,8 @@ class AllBeersCell: UITableViewCell {
     // MARK: - Selectors
     
     @objc func handlePressFavorite() {
-        beer!._favorite = !beer!._favorite
-        print("data manager")
-        if beer!._favorite {
-            dataManager.saveData(beer: beer!)
-
-        } else {
-            dataManager.removeData(beer: beer!)
-        }
+        
+        viewModel!.toggleIsFavorite()
         
         delegate?.updateView()
     }
@@ -98,3 +90,5 @@ class AllBeersCell: UITableViewCell {
     }
     
 }
+
+
