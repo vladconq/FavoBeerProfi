@@ -9,6 +9,8 @@ import Foundation
 
 class DetailBeerVM {
     
+    // MARK: - Properties
+    
     var beer: Beer!
     var dataManager = LocalDataManager()
     var delegate: DetailBeerVMDelegate?
@@ -36,6 +38,8 @@ class DetailBeerVM {
         return beer._favorite
     }
     
+    // MARK: - Helpers
+    
     func toggleIsFavorite() {
         beer._favorite = !beer._favorite
         
@@ -47,5 +51,10 @@ class DetailBeerVM {
         }
         
         delegate?.updateDetailBeerVC()
+    }
+    
+    func getDetailBeerCellVM(forIndexPath indexPath: IndexPath) -> DetailBeerCellVM? {
+        let detailBeerCellVM = DetailBeerCellVM(beer: beer, indexRow: indexPath.row)
+        return detailBeerCellVM
     }
 }

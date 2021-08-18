@@ -1,5 +1,5 @@
 //
-//  AllBeersCellViewModel.swift
+//  DetailBeerCellVM.swift
 //  FavoBeerPro
 //
 //  Created by Vladislav on 18.08.2021.
@@ -7,15 +7,15 @@
 
 import Foundation
 
-class AllBeerCellVM {
+class DetailBeerCellVM {
     
     private let beer: Beer
+    let indexRow: Int
     
-    init(beer: Beer) {
+    init(beer: Beer, indexRow: Int) {
         self.beer = beer
+        self.indexRow = indexRow
     }
-    
-    var dataManager = LocalDataManager()
     
     var beerName: String {
         guard let beerName = beer.name else { return "Name: -" }
@@ -27,20 +27,14 @@ class AllBeerCellVM {
         return "Vol: \(beerABV)"
     }
     
-    var isFavorite: Bool {
-        return beer._favorite
+    var beerEBC: String {
+        guard let beerEBC = beer.ebc else { return "EBC: -" }
+        return "EBC: \(beerEBC)"
     }
     
-    func toggleIsFavorite() {
-        beer._favorite = !beer._favorite
-        
-        if beer._favorite {
-            dataManager.saveData(beer: beer)
-
-        } else {
-            dataManager.removeData(beer: beer)
-        }
-        
+    var beerIBU: String {
+        guard let beerIBU = beer.ibu else { return "IBU: -" }
+        return "IBU: \(beerIBU)"
     }
     
 }

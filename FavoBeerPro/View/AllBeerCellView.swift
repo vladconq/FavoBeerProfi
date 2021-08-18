@@ -13,11 +13,10 @@ class AllBeerCellView: UITableViewCell {
     
     // MARK: - Properties
     
+    static let reuseIdentifier = "AllBeerCell"
+    
     var delegate: AllBeerVMDelegate?
     var dataManager = LocalDataManager()
-    
-    
-    static let reuseIdentifier = "AllBeersCell"
     
     var viewModel: AllBeerCellVM? {
         didSet {

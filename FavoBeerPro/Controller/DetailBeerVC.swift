@@ -14,9 +14,7 @@ class DetailBeerVC: UIViewController {
     var delegate: AllBeerVMDelegate?
     var viewModel: DetailBeerVM?
     
-    private let beerNameLabel = UILabel()
-    private let beerABVLabel = UILabel()
-    private let beerIBULabel = UILabel()
+    private let tableView = UITableView()
     
     private let isFavoriteBarButton: UIBarButtonItem = {
         let button = UIBarButtonItem()
@@ -31,10 +29,6 @@ class DetailBeerVC: UIViewController {
         super.viewWillAppear(animated)
         
         guard let viewModel = viewModel else { return }
-        
-        beerNameLabel.text = viewModel.beerName
-        beerABVLabel.text = viewModel.beerABV
-        beerIBULabel.text = viewModel.beerIBU
         
         isFavoriteBarButton.tintColor = viewModel.isFavorite ? #colorLiteral(red: 0.9686274529, green: 0.78039217, blue: 0.3450980484, alpha: 1) : #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
     }
@@ -57,14 +51,10 @@ class DetailBeerVC: UIViewController {
     // MARK: - Helpers
     
     func configureUI() {
-        view.backgroundColor = .white
+        view.backgroundColor = #colorLiteral(red: 0.921431005, green: 0.9214526415, blue: 0.9214410186, alpha: 1)
         configureNavigationBar()
         configureIsFavoriteButton()
-
-        
-        view.addSubview(beerNameLabel)
-        beerNameLabel.anchor(top: view.layoutMarginsGuide.topAnchor, left: view.leftAnchor, right: view.rightAnchor)
-        beerNameLabel.setHeight(height: 20)
+        configureTableView()
     }
     
     func configureNavigationBar() {
@@ -75,6 +65,17 @@ class DetailBeerVC: UIViewController {
         isFavoriteBarButton.target = self
         isFavoriteBarButton.action = #selector(barButtonCustomPressed)
     }
+    
+    func configureTableView() {
+        tableView.delegate = self
+        tableView.dataSource = self
+        tableView.register(DetailBeerCellView.self, forCellReuseIdentifier: DetailBeerCellView.reuseIdentifier)
+        tableView.rowHeight = 50
+        
+        view.addSubview(tableView)
+        tableView.anchor(top: view.safeAreaLayoutGuide.topAnchor, left: view.leftAnchor, right: view.rightAnchor, paddingTop: 50)
+        tableView.setHeight(height: 50 * 4)
+    }
 
 }
 
@@ -84,4 +85,21 @@ extension DetailBeerVC: DetailBeerVMDelegate {
     func updateDetailBeerVC() {
         isFavoriteBarButton.tintColor = viewModel!.isFavorite ? #colorLiteral(red: 0.9686274529, green: 0.78039217, blue: 0.3450980484, alpha: 1) : #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
     }
+}
+
+extension DetailBeerVC: UITableViewDataSource, UITableViewDelegate {
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return BeerDetail.allCases.count
+    }
+    
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: DetailBeerCellView.reuseIdentifier, for: indexPath) as! DetailBeerCellView
+        let detailBeerCellVM = viewModel!.getDetailBeerCellVM(forIndexPath: indexPath)
+        cell.viewModel = detailBeerCellVM
+        return cell
+    }
+    
+    
 }
