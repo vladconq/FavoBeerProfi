@@ -9,17 +9,17 @@ import UIKit
 
 
 
-class AllBeersCell: UITableViewCell {
+class AllBeerCellView: UITableViewCell {
     
     // MARK: - Properties
     
-    var delegate: UpdateAllBeersTableDelegate?
-    var dataManager = DataManager()
+    var delegate: AllBeerVMDelegate?
+    var dataManager = LocalDataManager()
     
     
     static let reuseIdentifier = "AllBeersCell"
     
-    var viewModel: AllBeersCellViewModel? {
+    var viewModel: AllBeerCellVM? {
         didSet {
             beerNameLabel.text = viewModel?.beerName
             beerABVLabel.text = viewModel?.beerABV
@@ -65,7 +65,7 @@ class AllBeersCell: UITableViewCell {
         
         viewModel!.toggleIsFavorite()
         
-        delegate?.updateView()
+        delegate?.updateAllBeerVC()
     }
     
     // MARK: - Helpers

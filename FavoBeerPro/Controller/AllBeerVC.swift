@@ -7,11 +7,11 @@
 
 import UIKit
 
-class AllBeersController: UIViewController {
+class AllBeerVC: UIViewController {
     
     // MARK: - Properties
     
-    private let viewModel = AllBeersViewModel()
+    private let viewModel = AllBeerVM()
     private let tableView = UITableView()
     
     // MARK: - Lifecycle
@@ -38,7 +38,7 @@ class AllBeersController: UIViewController {
     func configureTableView() {
         tableView.delegate = self
         tableView.dataSource = self
-        tableView.register(AllBeersCell.self, forCellReuseIdentifier: AllBeersCell.reuseIdentifier)
+        tableView.register(AllBeerCellView.self, forCellReuseIdentifier: AllBeerCellView.reuseIdentifier)
         tableView.rowHeight = 70
         
         view.addSubview(tableView)
@@ -49,20 +49,17 @@ class AllBeersController: UIViewController {
 
 // MARK: - UITableViewDataSource
 
-extension AllBeersController: UITableViewDataSource {
+extension AllBeerVC: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return viewModel.beers.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: AllBeersCell.reuseIdentifier, for: indexPath) as! AllBeersCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: AllBeerCellView.reuseIdentifier, for: indexPath) as! AllBeerCellView
         
-//        let beer = viewModel.beers[indexPath.row]
-//        cell.beer = beer
-        let allBeersCellViewModel = viewModel.getAllBeersCellViewModel(forIndexPath: indexPath)
-        
-        cell.viewModel = allBeersCellViewModel
+        let allBeerCellVM = viewModel.getAllBeerCellVM(forIndexPath: indexPath)
+        cell.viewModel = allBeerCellVM
         
         cell.delegate = self
         
@@ -72,16 +69,16 @@ extension AllBeersController: UITableViewDataSource {
 
 // MARK: - UITableViewDelegate
 
-extension AllBeersController: UITableViewDelegate {
+extension AllBeerVC: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         
-        let detailsBeerViewModel = viewModel.getDetailsBeerViewModel(forIndexPath: indexPath)
+        let detailBeerVC = DetailBeerVC()
+        let detailBeerVM = viewModel.getDetailBeerVM(forIndexPath: indexPath)
+        detailBeerVC.viewModel = detailBeerVM!
+        detailBeerVC.delegate = self
         
-        let detailVC = DetailsBeerController()
-        detailVC.viewModel = detailsBeerViewModel!
-        detailVC.delegate = self
-        navigationController?.pushViewController(detailVC, animated: true)
+        navigationController?.pushViewController(detailBeerVC, animated: true)
     }
     
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
@@ -95,11 +92,10 @@ extension AllBeersController: UITableViewDelegate {
 
 //MARK: - UpdateAllBeersTableDelegate
 
-extension AllBeersController: UpdateAllBeersTableDelegate {
-    func updateView() {
+extension AllBeerVC: AllBeerVMDelegate {
+    func updateAllBeerVC() {
         DispatchQueue.main.async {
             self.tableView.reloadData()
-            print("reload")
         }
     }
 }

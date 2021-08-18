@@ -7,7 +7,7 @@
 
 import UIKit
 
-class FavoriteBeersController: UIViewController {
+class FavoriteBeerVC: UIViewController {
     
     // MARK: - Properties
     

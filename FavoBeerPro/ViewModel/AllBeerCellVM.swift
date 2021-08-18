@@ -7,14 +7,14 @@
 
 import Foundation
 
-class AllBeersCellViewModel {
+class AllBeerCellVM {
     
     private let beer: Beer
-    var dataManager = DataManager()
+    var dataManager = LocalDataManager()
     
     var beerName: String {
         guard let beerName = beer.name else { return "Name: -" }
-        return "Name: \(beerName)"
+        return beerName
     }
     
     var beerABV: String {
@@ -34,11 +34,9 @@ class AllBeersCellViewModel {
         beer._favorite = !beer._favorite
         
         if beer._favorite {
-            print("add")
             dataManager.saveData(beer: beer)
 
         } else {
-            print("delete")
             dataManager.removeData(beer: beer)
         }
         

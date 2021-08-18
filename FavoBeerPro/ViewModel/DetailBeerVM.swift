@@ -7,34 +7,29 @@
 
 import Foundation
 
-protocol DetailsBeerViewModelDelegate {
-    func updateDetailsBeerVC()
-}
-
-class DetailsBeerViewModel {
+class DetailBeerVM {
     
     var beer: Beer!
-    var dataManager = DataManager()
-    var delegate: DetailsBeerViewModelDelegate?
+    var dataManager = LocalDataManager()
+    var delegate: DetailBeerVMDelegate?
     
     init(beer: Beer) {
         self.beer = beer
     }
     
     var beerName: String {
-        guard let beerName = beer.name else { return "Name: -" }
-        print(beerName)
-        return "Name: \(beerName)"
+        guard let beerName = beer.name else { return "-" }
+        return beerName
     }
     
     var beerABV: String {
-        guard let beerABV = beer.abv else { return "ABV: -" }
-        return "ABV: \(beerABV)"
+        guard let beerABV = beer.abv else { return "-" }
+        return "\(beerABV)"
     }
     
     var beerIBU: String {
-        guard let beerIBU = beer.ibu else { return "IBU: -" }
-        return "IBU: \(beerIBU)"
+        guard let beerIBU = beer.ibu else { return "-" }
+        return "\(beerIBU)"
     }
     
     var isFavorite: Bool {
@@ -51,6 +46,6 @@ class DetailsBeerViewModel {
             dataManager.removeData(beer: beer!)
         }
         
-        delegate?.updateDetailsBeerVC()
+        delegate?.updateDetailBeerVC()
     }
 }

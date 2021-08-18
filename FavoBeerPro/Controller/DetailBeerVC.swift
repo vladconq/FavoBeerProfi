@@ -7,21 +7,23 @@
 
 import UIKit
 
-class DetailsBeerController: UIViewController {
+class DetailBeerVC: UIViewController {
     
     // MARK: - Properties
+    
+    var delegate: AllBeerVMDelegate?
+    var viewModel: DetailBeerVM?
+    
     private let beerNameLabel = UILabel()
     private let beerABVLabel = UILabel()
     private let beerIBULabel = UILabel()
     
-    private let button: UIBarButtonItem = {
+    private let isFavoriteBarButton: UIBarButtonItem = {
         let button = UIBarButtonItem()
         button.image = UIImage(systemName: "star.fill")
-
         return button
     }()
-    var delegate: UpdateAllBeersTableDelegate?
-    var viewModel: DetailsBeerViewModel?
+
     
     // MARK: - Lifecycle
     
@@ -34,42 +36,52 @@ class DetailsBeerController: UIViewController {
         beerABVLabel.text = viewModel.beerABV
         beerIBULabel.text = viewModel.beerIBU
         
-        button.tintColor = viewModel.isFavorite ? #colorLiteral(red: 0.9686274529, green: 0.78039217, blue: 0.3450980484, alpha: 1) : #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
+        isFavoriteBarButton.tintColor = viewModel.isFavorite ? #colorLiteral(red: 0.9686274529, green: 0.78039217, blue: 0.3450980484, alpha: 1) : #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         viewModel?.delegate = self
-        navigationItem.rightBarButtonItem = button
+        navigationItem.rightBarButtonItem = isFavoriteBarButton
         configureUI()
     }
     
     // MARK: - Selectors
     
     @objc func barButtonCustomPressed() {
-        
         viewModel!.toggleIsFavorite()
         
-        delegate?.updateView()
+        delegate?.updateAllBeerVC()
     }
     
     // MARK: - Helpers
     
     func configureUI() {
         view.backgroundColor = .white
-        
-        button.target = self
-        button.action = #selector(barButtonCustomPressed)
+        configureNavigationBar()
+        configureIsFavoriteButton()
+
         
         view.addSubview(beerNameLabel)
         beerNameLabel.anchor(top: view.layoutMarginsGuide.topAnchor, left: view.leftAnchor, right: view.rightAnchor)
         beerNameLabel.setHeight(height: 20)
     }
+    
+    func configureNavigationBar() {
+        title = viewModel?.beerName
+    }
+    
+    func configureIsFavoriteButton() {
+        isFavoriteBarButton.target = self
+        isFavoriteBarButton.action = #selector(barButtonCustomPressed)
+    }
 
 }
 
-extension DetailsBeerController: DetailsBeerViewModelDelegate {
-    func updateDetailsBeerVC() {
-        button.tintColor = viewModel!.isFavorite ? #colorLiteral(red: 0.9686274529, green: 0.78039217, blue: 0.3450980484, alpha: 1) : #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
+// MARK: - DetailBeerViewModelDelegate
+
+extension DetailBeerVC: DetailBeerVMDelegate {
+    func updateDetailBeerVC() {
+        isFavoriteBarButton.tintColor = viewModel!.isFavorite ? #colorLiteral(red: 0.9686274529, green: 0.78039217, blue: 0.3450980484, alpha: 1) : #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
     }
 }

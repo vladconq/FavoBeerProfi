@@ -24,7 +24,7 @@ class Beer: Codable, Equatable {
             
             // first initialisation
             if favorite == nil {
-                let favoriteBeers = DataManager().loadData()
+                let favoriteBeers = LocalDataManager().loadData()
                 
                 for favoriteBeer in favoriteBeers {
                     if name == favoriteBeer.name {

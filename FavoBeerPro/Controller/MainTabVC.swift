@@ -7,7 +7,7 @@
 
 import UIKit
 
-class MainTabController: UITabBarController {
+class MainTabVC: UITabBarController {
     
     // MARK: - Lifecycle
     
@@ -19,8 +19,8 @@ class MainTabController: UITabBarController {
     // MARK: - Helpers
     
     func configureViewControllers() {
-        let allBeersController = UINavigationController(rootViewController: AllBeersController())
-        let favoriteBeersController = UINavigationController(rootViewController: FavoriteBeersController())
+        let allBeersController = UINavigationController(rootViewController: AllBeerVC())
+        let favoriteBeersController = UINavigationController(rootViewController: FavoriteBeerVC())
         
         allBeersController.tabBarItem = UITabBarItem(title: "All beers", image: nil, selectedImage: nil)
         allBeersController.tabBarItem.setTitleTextAttributes([.font: UIFont.boldSystemFont(ofSize: 13)], for: .normal)
