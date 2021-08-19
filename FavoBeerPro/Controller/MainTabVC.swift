@@ -25,7 +25,7 @@ class MainTabVC: UITabBarController {
         allBeersController.tabBarItem = UITabBarItem(title: "All beers", image: nil, selectedImage: nil)
         allBeersController.tabBarItem.setTitleTextAttributes([.font: UIFont.boldSystemFont(ofSize: 13)], for: .normal)
         
-        favoriteBeersController.tabBarItem = UITabBarItem(title: "Favorites", image: nil, selectedImage: nil)
+        favoriteBeersController.tabBarItem = UITabBarItem(title: "Favorite", image: nil, selectedImage: nil)
         favoriteBeersController.tabBarItem.setTitleTextAttributes([.font: UIFont.boldSystemFont(ofSize: 13)], for: .normal)
         
         viewControllers = [allBeersController, favoriteBeersController]

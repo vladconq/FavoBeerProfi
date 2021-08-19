@@ -36,7 +36,6 @@ class DetailBeerVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         viewModel?.delegate = self
-        navigationItem.rightBarButtonItem = isFavoriteBarButton
         configureUI()
     }
     
@@ -59,6 +58,7 @@ class DetailBeerVC: UIViewController {
     
     func configureNavigationBar() {
         title = viewModel?.beerName
+        navigationItem.rightBarButtonItem = isFavoriteBarButton
     }
     
     func configureIsFavoriteButton() {
@@ -92,7 +92,6 @@ extension DetailBeerVC: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return BeerDetail.allCases.count
     }
-    
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: DetailBeerCellView.reuseIdentifier, for: indexPath) as! DetailBeerCellView

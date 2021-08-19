@@ -15,3 +15,7 @@ protocol DetailBeerVMDelegate {
     func updateDetailBeerVC()
 }
 
+protocol FavoriteBeerVMDelegate {
+    func updateFavoriteBeerVC()
+}
+

@@ -51,6 +51,7 @@ class DetailBeerCellView: UITableViewCell {
     }
     
     // MARK: - Helpers
+    
     func configureBeerInfoLabel() {
         addSubview(beerInfoLabel)
         beerInfoLabel.anchor(left: contentView.leftAnchor, right: contentView.rightAnchor)
