@@ -76,7 +76,7 @@ extension AllBeerVC: UITableViewDelegate {
         let detailBeerVC = DetailBeerVC()
         let detailBeerVM = viewModel.getDetailBeerVM(forIndexPath: indexPath)
         detailBeerVC.viewModel = detailBeerVM!
-        detailBeerVC.delegate = self
+        detailBeerVC.delegateAllBeerVM = self
         
         navigationController?.pushViewController(detailBeerVC, animated: true)
     }

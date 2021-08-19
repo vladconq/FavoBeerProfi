@@ -11,7 +11,8 @@ class DetailBeerVC: UIViewController {
     
     // MARK: - Properties
     
-    var delegate: AllBeerVMDelegate?
+    var delegateAllBeerVM: AllBeerVMDelegate?
+    var delegateFavoriteBeerVM: FavoriteBeerVMDelegate?
     var viewModel: DetailBeerVM?
     
     private let tableView = UITableView()
@@ -43,8 +44,9 @@ class DetailBeerVC: UIViewController {
     
     @objc func barButtonCustomPressed() {
         viewModel!.toggleIsFavorite()
-        
-        delegate?.updateAllBeerVC()
+        print("updated")
+        delegateAllBeerVM?.updateAllBeerVC()
+        delegateFavoriteBeerVM?.updateFavoriteBeerVC()
     }
     
     // MARK: - Helpers

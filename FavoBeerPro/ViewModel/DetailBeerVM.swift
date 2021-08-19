@@ -47,6 +47,7 @@ class DetailBeerVM {
             dataManager.saveData(beer: beer!)
 
         } else {
+            print("remove")
             dataManager.removeData(beer: beer!)
         }
         

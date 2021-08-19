@@ -18,9 +18,27 @@ class FavoriteBeerVM {
         }
     }
     
+    func updateFavoriteArray(sortBy: BeerDetail = BeerDetail.name) {
+        switch sortBy {
+        case .name:
+            favoriteBeers = favoriteBeers.filter { $0.name != nil }.sorted(by: {$0.name! < $1.name!})
+        case .abv:
+            favoriteBeers = favoriteBeers.filter { $0.abv != nil }.sorted(by: {$0.abv! < $1.abv!})
+        case .ebc:
+            favoriteBeers = favoriteBeers.filter { $0.ebc != nil }.sorted(by: {$0.ebc! < $1.ebc!})
+        case .ibu:
+            favoriteBeers = favoriteBeers.filter { $0.ibu != nil }.sorted(by: {$0.ibu! < $1.ibu!})
+        }
+    }
+    
     func getFavoriteBeerCellVM(forIndexPath indexPath: IndexPath) -> FavoriteBeerCellVM? {
         let favoriteBeerCellVM = FavoriteBeerCellVM(favoriteBeer: favoriteBeers[indexPath.row])
         return favoriteBeerCellVM
+    }
+    
+    func getDetailBeerVM(forIndexPath indexPath: IndexPath) -> DetailBeerVM? {
+        let detailBeerVM = DetailBeerVM(beer: favoriteBeers[indexPath.row])
+        return detailBeerVM
     }
     
     func loadData() {

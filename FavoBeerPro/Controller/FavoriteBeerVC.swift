@@ -12,7 +12,15 @@ class FavoriteBeerVC: UIViewController {
     // MARK: - Properties
     
     private let viewModel = FavoriteBeerVM()
+    
     private let tableView = UITableView()
+    
+    private let segmentedControl: UISegmentedControl = {
+        let segmentedControl = UISegmentedControl(items: BeerDetail.allCases.map({$0.description}))
+        segmentedControl.addTarget(self, action: #selector(handleSegmentPressed), for: .valueChanged)
+        segmentedControl.selectedSegmentIndex = 0
+        return segmentedControl
+    }()
     
     // MARK: - Lifecycle
     
@@ -25,17 +33,48 @@ class FavoriteBeerVC: UIViewController {
         super.viewWillAppear(animated)
         viewModel.delegate = self
         viewModel.loadData()
+        viewModel.updateFavoriteArray()
+    }
+    
+    // MARK: - Selectors
+    
+    @objc func handleSegmentPressed(_ segmentedControl: UISegmentedControl) {
+        switch BeerDetail(rawValue: segmentedControl.selectedSegmentIndex) {
+        case .name:
+            print("changed")
+            viewModel.updateFavoriteArray(sortBy: BeerDetail.name)
+        case .abv:
+            print("changed")
+            viewModel.updateFavoriteArray(sortBy: BeerDetail.abv)
+        case .ebc:
+            print("changed")
+            viewModel.updateFavoriteArray(sortBy: BeerDetail.ebc)
+        case .ibu:
+            print("changed")
+            viewModel.updateFavoriteArray(sortBy: BeerDetail.ibu)
+        default:
+            print("-")
+        }
     }
     
     // MARK: - Helpers
     
     func configureUI() {
-        configureTableView()
+        view.backgroundColor = .white
         configureNavigationBar()
+        configureSegmentedControl()
+        configureTableView()
     }
     
     func configureNavigationBar() {
         title = "Favorite"
+    }
+    
+    func configureSegmentedControl() {
+        view.addSubview(segmentedControl)
+        segmentedControl.anchor(top: view.safeAreaLayoutGuide.topAnchor, left: view.leftAnchor, right: view.rightAnchor,
+                                paddingTop: 10, paddingLeft: 10, paddingRight: 10)
+        segmentedControl.setHeight(height: 35)
     }
     
     func configureTableView() {
@@ -45,7 +84,7 @@ class FavoriteBeerVC: UIViewController {
         tableView.rowHeight = 60
         
         view.addSubview(tableView)
-        tableView.frame = view.frame
+        tableView.anchor(top: segmentedControl.bottomAnchor, left: view.leftAnchor, right: view.rightAnchor, bottom: view.bottomAnchor)
     }
     
 }
