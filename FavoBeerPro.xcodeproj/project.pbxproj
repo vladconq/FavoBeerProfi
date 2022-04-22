@@ -30,6 +30,9 @@
 		0A0B1EE226CE297600EDE8A6 /* FavoriteBeerVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A0B1EE126CE297600EDE8A6 /* FavoriteBeerVM.swift */; };
 		0A0B1EE426CE2BE100EDE8A6 /* FavoriteBeerCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A0B1EE326CE2BE100EDE8A6 /* FavoriteBeerCellView.swift */; };
 		0A0B1EE626CE2CB000EDE8A6 /* FavoriteBeerCellVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A0B1EE526CE2CB000EDE8A6 /* FavoriteBeerCellVM.swift */; };
+		467ABDC42812E397004E48E0 /* All Beers.png in Resources */ = {isa = PBXBuildFile; fileRef = 467ABDC12812E397004E48E0 /* All Beers.png */; };
+		467ABDC52812E397004E48E0 /* All Beers Detail.png in Resources */ = {isa = PBXBuildFile; fileRef = 467ABDC22812E397004E48E0 /* All Beers Detail.png */; };
+		467ABDC62812E397004E48E0 /* Favorite Beers.png in Resources */ = {isa = PBXBuildFile; fileRef = 467ABDC32812E397004E48E0 /* Favorite Beers.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -58,6 +61,9 @@
 		0A0B1EE126CE297600EDE8A6 /* FavoriteBeerVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteBeerVM.swift; sourceTree = "<group>"; };
 		0A0B1EE326CE2BE100EDE8A6 /* FavoriteBeerCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteBeerCellView.swift; sourceTree = "<group>"; };
 		0A0B1EE526CE2CB000EDE8A6 /* FavoriteBeerCellVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteBeerCellVM.swift; sourceTree = "<group>"; };
+		467ABDC12812E397004E48E0 /* All Beers.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "All Beers.png"; sourceTree = "<group>"; };
+		467ABDC22812E397004E48E0 /* All Beers Detail.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "All Beers Detail.png"; sourceTree = "<group>"; };
+		467ABDC32812E397004E48E0 /* Favorite Beers.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Favorite Beers.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -74,6 +80,7 @@
 		0A04E47226C967DC00E53CB9 = {
 			isa = PBXGroup;
 			children = (
+				467ABDC02812E330004E48E0 /* pics */,
 				0A04E47D26C967DC00E53CB9 /* FavoBeerPro */,
 				0A04E47C26C967DC00E53CB9 /* Products */,
 			);
@@ -166,6 +173,16 @@
 			path = API;
 			sourceTree = "<group>";
 		};
+		467ABDC02812E330004E48E0 /* pics */ = {
+			isa = PBXGroup;
+			children = (
+				467ABDC22812E397004E48E0 /* All Beers Detail.png */,
+				467ABDC12812E397004E48E0 /* All Beers.png */,
+				467ABDC32812E397004E48E0 /* Favorite Beers.png */,
+			);
+			path = pics;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -223,8 +240,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				467ABDC52812E397004E48E0 /* All Beers Detail.png in Resources */,
 				0A04E48B26C967DE00E53CB9 /* LaunchScreen.storyboard in Resources */,
+				467ABDC42812E397004E48E0 /* All Beers.png in Resources */,
 				0A04E48826C967DE00E53CB9 /* Assets.xcassets in Resources */,
+				467ABDC62812E397004E48E0 /* Favorite Beers.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
