@@ -1,4 +1,4 @@
-# FavoBeer
+# Beer Manager
 
 This app allows you to get a comprehensive beer list and manage your favorite beers!
 
