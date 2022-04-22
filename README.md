@@ -8,7 +8,7 @@ This app allows you to get a comprehensive beer list and manage your favorite be
   <img src="https://github.com/vladconq/FavoBeer/blob/main/FavoBeer/SupportingFiles/Favorite%20Beers.png" width="250">
 </p>
   
-FavoBeer is capable of the following:
+This manager is capable of the following:
 - Fetch paginated beer list from https://punkapi.com
 - Mark beer as favorite
 - See list of favorite beers
